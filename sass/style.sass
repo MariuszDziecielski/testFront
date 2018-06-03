@@ -12,6 +12,9 @@ body
     font: normal 20px/27px 'Roboto Condensed', sans-serif
 *
     box-sizing: border-box
+img
+    max-width: 100%
+    height: auto
 header
     max-width: 1680px
     margin: 0 auto
@@ -60,7 +63,6 @@ header
                         letter-spacing: 2px
                         &:visited
                             color: $whiteColor
-
 .films-container
     max-width: 1680px
     margin: 0 auto
@@ -221,15 +223,165 @@ header
                 font-size: 16px    
                 color: #d57232               
 /* Media queries */
+/* For larger computers: */
+@media (max-width: 1199px)
+    body
+        font: normal 1.15em/27px 'Roboto Condensed', sans-serif
+    header,
+    .films-container,
+    .films-description
+        width: 100%
+        height: 100%
+    header
+        .bg-light
+            padding-top: 1em
+            padding-bottom: 1em
+            .navbar-brand
+                font-size: 2.2em
+                padding: 17px 28px 13px 28px
+                margin-left: 0.4em
+            .navbar-collapse
+                padding-right: 0.1em
+                li
+                    padding: 0 0.15em 0 0.1em
+                    &.buy-now
+                        a 
+                            font-size: 1.2em
+                            padding: 0.15em 0.3em 0.15em 0.31em
+    .films-container
+        padding: 3.5em 4em 1em 4em
+        .film-details
+            padding-top: 1.4em   
+            .film-name
+                font-size: 1.2em
+                p:nth-child(2)
+                    font-size: 0.9em
+            .film-settings
+                a 
+                    img 
+                        width: 2.35em
+                        height: 2.35em
+                    &.active::before
+                        width: 2em
+                        height: 2em
+    .films-description
+        padding: 1.7em 4em 2em 4.2em
+        p 
+            font-size: 0.9em
+            margin-bottom: 1.3em
+        .download
+            margin-top: 1.7em
+            img 
+                width: 2.3em
+                height: 2.3em
+            .file
+                margin-left: 0.5em
+                margin-top: 0.35em
+                p            
+                    font-size: 1em
+                a   
+                    font-size: 0.8em 
 /* For computers: */
-@media (max-width: 992px)
-    body
-        font-size: 19px
+@media (max-width: 991px)
+    header
+        .bg-light
+            padding-left: 2em
+            padding-right: 2em
+            .navbar-toggler
+                outline: none
+            .navbar-brand
+                margin-left: 0
+                font-size: 2em
+                padding: 0.4em 0.6em 0.3em 0.7em
+            .navbar-collapse
+                padding-top: 1em
+                padding-bottom: 1em
+                li
+                    width: 25em
+                    padding: 0.5em 1em 0.5em 0
+                    &.active 
+                        padding: 0.5em 1em 0.5em 0
+    .films-container
+        padding: 3em 3.5em 0.8em 3.5em
+        .film-details                   
+            padding-top: 1em 
+    .films-description
+        padding: 1.2em 3.5em 1.5em 3.8em
 /* For tablets: */
-@media (max-width: 768px)
-    body
-        font-size: 18px
+@media (max-width: 767px)
+    header
+        .bg-light
+            .navbar-brand            
+                font-size: 1.8em
+                padding: 0.3em 0.5em 0.2em 0.6em
+            .navbar-collapse
+                li
+                    width: 22em
+    .films-container
+        padding: 2em 2.5em 0.8em 2.5em
+        .film-details
+            .film-name
+                font-size: 1em
+                p:nth-child(2)
+                    font-size: 0.7em
+            .film-settings
+                a 
+                    img 
+                        width: 2.15em
+                        height: 2.15em
+    .films-description
+        padding: 1em 3.3em 1.3em 3.6em
+        .download
+            margin-top: 1.5em
+            img 
+                width: 2em
+                height: 2em
+            .file
+                margin-top: 0.25em
+                p             
+                    font-size: 0.8em
+                a   
+                    font-size: 0.7em 
 /* For smart phones: */
-@media (max-width: 480px)
-    body
-        font-size: 17px
+@media (max-width: 479px)
+    header
+        .bg-light
+            padding-left: 1em
+            padding-right: 1em
+            .navbar-brand
+                font-size: 1.6em
+                padding: 0.2em 0.35em 0.18em 0.5em
+                margin-right: 0
+            .navbar-collapse
+                 li
+                    width: 80vw
+    .films-container
+        padding: 1.5em 1.5em 0.3em 1.5em
+        .film-details
+            justify-content: center
+            flex-wrap: wrap
+            text-align: center
+            padding-left: 0
+            padding-bottom: 0.8em
+            .film-name
+                padding-bottom: 0.7em
+            .film-settings 
+                a 
+                    margin-left: 0.8em
+                    &:nth-child(1)   
+                        margin-left: 0
+    .films-description
+        padding: 0.9em 1em 1.2em 1em
+        p 
+            letter-spacing: normal
+            text-align: center
+        .download
+            img 
+                width: 2em
+                height: 2em
+            .file
+                margin-left: 0.3em
+                margin-top: 0
+                p 
+                    text-align: left
+                    line-height: 1.1em
