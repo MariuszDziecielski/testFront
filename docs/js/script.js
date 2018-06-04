@@ -1,33 +1,27 @@
-/*
-const $listItems = $('header li');
+const $listItems = $('header li'),
+	$filmSettingsChild = $('.film-settings a:nth-child(2)');
 $listItems.each((index, elem) => {
-    $(elem).click(() => {
-        $listItems.removeClass('active');
-        $(elem).addClass('active');
-    });
+	$(elem).click(() => {
+		$listItems.removeClass('active');
+		$(elem).addClass('active');
+		if (!$('.your-account').hasClass('active')) {
+			$('.your-account a').css('background', 'url("../images/locked-inactive.png") left center no-repeat');
+		} else {
+			$('.your-account a').css('background', 'url("../images/locked-active.png") left center no-repeat');
+		}
+	});
 });
 $('.navbar-collapse a').click(() => {
-    if ($('.navbar-collapse').hasClass('in')) {
-        $('.navbar-toggle').click();
-    }
+	if ($('.navbar-collapse').hasClass('show')) {
+		$('.navbar-toggler').click();
+	}
 });
-$('.navbar-nav li a').each((index, elem) => {
-    $(elem).click(() => {
-        const href = $(elem).attr('href');
-        $(href).animatescroll({
-            scrollSpeed: 4000,
-            easing: 'easeOutBack',
-            padding: 40
-        });
-    });
-});
-*/
-$('.film-settings a').click(function(e) {
+$('.film-settings a').click(e => {
 	e.preventDefault();
 });
-$('.film-settings a:nth-child(2)').click(function(e) {
+$filmSettingsChild.click(e => {
 	e.preventDefault();
-	$('.film-settings a:nth-child(2)').toggleClass('active');
+	$filmSettingsChild.toggleClass('active');
 	$('.film .film-playlist').toggle();
 });
 $('.film-playlist-title button').click(function() {

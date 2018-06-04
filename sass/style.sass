@@ -2,10 +2,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&subset=latin-ext')
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin-ext')
 $whiteColor: #fff
-=colors($backgroundColor: $whiteColor, $color: $lightBlueColor)
+$darkBrownColor: #423838
+$blackColor: #100f0f
+$darkGreyColor: #5a5454
+=colors($backgroundColor, $color: $whiteColor)
     background-color: $backgroundColor
     color: $color
-=dimensions($width: 50px, $height: 50px)
+=dimensions($width, $height)
     width: $width
     height: $height
 body
@@ -21,14 +24,11 @@ header
     text-transform: uppercase
     .bg-light
         background-color: $whiteColor !important
-        padding-top: 22px
-        padding-bottom: 22px
+        padding: 22px 14px 22px 15px
         .navbar-brand
-            background-color: #000000
-            color: $whiteColor
-            font-size: 45px
-            font-weight: 300
-            padding: 19px 30px 15px 30px
+            +colors(#000000)
+            font: 300 45px/27px 'Roboto Condensed', sans-serif
+            padding: 18px 31px 15px
             margin-left: 19px
             letter-spacing: 5px
             &:visited
@@ -36,28 +36,22 @@ header
             &:hover
                 color: #cccccc
         .navbar-collapse
-            padding-right: 7px
-            padding-top: 1px
+            padding: 5px 7px 0 0
             li
                 padding: 0 12px 0 11px
-                &.active
+                &.your-account
                     padding: 0 4px 0 10px
-                    a 
+                    a
+                        background: url("../images/locked-active.png") left center no-repeat
+                        padding-left: 40px
+                &.active
+                    a
                         color: #267ec1 !important
-                        background-image: url("../images/locked.png")
-                        background-repeat: no-repeat
-                        background-position: left center
-                        padding-left: 40px                      
-                        img                        
-                            position: relative
-                            -top: 5px
                 &.buy-now
-                    a 
-                        background-color: #ff0000 
-                        color: $whiteColor
-                        font-size: 24px
-                        font-weight: 600
-                        padding: 5px 10px 7px 12px
+                    a
+                        +colors(#ff0000)
+                        font: 600 24px/27px 'Roboto Condensed', sans-serif
+                        padding: 4px 10px 7px 13px
                         position: relative
                         top: 3px
                         letter-spacing: 2px
@@ -70,101 +64,93 @@ header
     background-color: #272121
     padding: 78px 90px 0 90px
     .film
-        height: 844px
         display: flex
         justify-content: flex-end
         align-items: flex-end
-        width: 100%
+        +dimensions(100%, 844px)
         position: relative
-        .film-playlist            
-            z-index: 100
-            width: 503px
-            height: 681px          
-            background-color: #423838 
-            margin-bottom: 6px           
+        .film-playlist
+            +dimensions(503px, 681px)
+            +colors($darkBrownColor)
+            margin-bottom: 6px
             display: none
             position: absolute
-            right: -40px 
-            bottom: 0px
-            color: white      
-            &::after            
-                height: 657px              
+            right: -40px
+            bottom: 0
+            &::after
+                height: 657px
                 content: ''
                 border-right: 8px solid #242121
-                border-radius: 5px 
+                border-radius: 5px
                 position: absolute
                 top: 13px
                 right: 10px
             .film-playlist-panel-A,
-            .film-playlist-panel-B           
-                background-color: #100f0f 
-                h2 
-                    font-size: 24px
-                    font-weight: 600
+            .film-playlist-panel-B
+                background-color: $blackColor
+                h2,
+                .film-playlist-item
+                    &::after
+                        width: 503px
+                        content: ''
+                        border-bottom: 1px solid $darkGreyColor
+                        position: absolute
+                        bottom: 0px
+                        right: 0px
+                h2
+                    font: 600 24px/27px 'Roboto Condensed', sans-serif
                     letter-spacing: 2px
                     padding: 15px 19px
-                    position: relative           
-                    width: 100%
-                    &::after
-                        width: 500px
-                        content: ''
-                        border-bottom: 1px solid #5a5454                        
-                        position: absolute
-                        bottom: 0px
-                        right: 0px
-                .film-playlist-item
-                    padding: 20px 20px 13px 20px
-                    background-color: #423838
                     position: relative
-                    &::after
-                        width: 500px
-                        content: ''
-                        border-bottom: 1px solid #5a5454                        
-                        position: absolute
-                        bottom: 0px
-                        right: 0px
+                    width: 100%
+                .film-playlist-item
+                    padding: 18px 20px 12px 20px
+                    background-color: $darkBrownColor
+                    position: relative
                     .film-playlist-title
                         display: flex
                         justify-content: space-between
-                        h3 
+                        h3
                             font-size: 18px
                             letter-spacing: 1px
                             position: relative
                             top: -3px
                             left: -2px
                         button
-                            background-image: url("../images/button-content-hidden.png")
-                            background-repeat: no-repeat
-                            background-position: left center
-                            width: 46px
-                            height: 21px
+                            background: url("../images/button-content-hidden.png") left center no-repeat
+                            +dimensions(46px, 21px)
                             border: none
                             outline: none
                             margin-right: 10px
                     .film-playlist-content
                         display: none
-                        margin-top: 3px
-                        margin-right: 11px                        
-                        line-height: 25px
+                        margin: 3px 11px 0 0
                         text-align: justify
-                        font-size: 16px                   
-                .active    
-                    background-color: #100f0f       
+                        font: 400 16px/25px 'Roboto Condensed', sans-serif
+                .active
+                    background-color: $blackColor
                     .film-playlist-title
                         button
                             background-image: url("../images/button-content-visible.png")
                     .film-playlist-content
                         display: block
+            .film-playlist-panel-A
+                .film-playlist-item
+                    &:not(:first-of-type)
+                        padding: 19px 20px 15px 20px
+                    &:nth-of-type(4)
+                        padding-top: 18px
+                    &:nth-of-type(4),
+                    &:last-of-type
+                        padding-bottom: 14px
     .film-details
         display: flex
         justify-content: space-between
-        padding-top: 21px   
-        padding-left: 5px
+        padding: 21px 0 0 5px
         .film-name
-            font-family: 'Roboto', sans-serif
+            font: 400 25px/27px 'Roboto', sans-serif
             color: $whiteColor
-            font-size: 25px
-            letter-spacing: 1px     
+            letter-spacing: 1px
             p:nth-child(2)
                 color: #b4622e
                 font-size: 21px
@@ -172,56 +158,53 @@ header
                 position: relative
                 top: -2px
                 left: -1px
-        .film-settings           
+        .film-settings
             position: relative
             right: -1px
             align-self: flex-end
-            a 
+            a
                 position: relative
                 margin-left: 20px
                 text-decoration: none
-                &:nth-child(1)                  
+                &:nth-child(1)
                     margin-right: 1px
                 &.active::before
                     position: absolute
                     top: -75px
                     left: 3px
-                    transform: rotate(45deg)                                          
-                    width: 34px
-                    height: 34px
-                    background-color: #423838
-                    content: ''  
+                    transform: rotate(45deg)
+                    +dimensions(34px, 34px)
+                    background-color: $darkBrownColor
+                    content: ''
 .films-description
-    background-color: #ebebeb
     max-width: 1680px
     margin: 0 auto
-    padding: 40px 89px 55px 96px
-    color: #7d7d7d
-    p 
-        line-height: 30px
-        font-size: 18px
-        margin-bottom: 31px
+    padding: 42px 89px 55px 96px
+    +colors(#ebebeb, #7d7d7d)
+    h2
+        display: none
+    p
+        font: 400 18px/30px 'Roboto Condensed', sans-serif
+        margin-bottom: 30px
         letter-spacing: 1px
-        text-align: justify        
+        text-align: justify
     .download
-        margin-top: 39px
+        margin-top: 41px
         display: flex
-        img 
-            width: 50px
-            height: 50px
+        img
+            +dimensions(50px, 50px)
             position: relative
             left: -5px
         .file
             flex-direction: column
-            margin-left: 9px
-            margin-top: 12px
-            p 
-                margin-bottom: 0px             
+            margin: 12px 0 0 9px
+            p
+                margin-bottom: 0px
                 font-size: 21px
                 line-height: 10px
-            a   
-                font-size: 16px    
-                color: #d57232               
+            a
+                font-size: 16px
+                color: #d57232
 /* Media queries */
 /* For larger computers: */
 @media (max-width: 1199px)
@@ -230,12 +213,10 @@ header
     header,
     .films-container,
     .films-description
-        width: 100%
-        height: 100%
+        +dimensions(100%, 100%)
     header
         .bg-light
-            padding-top: 1em
-            padding-bottom: 1em
+            padding: 1em 0
             .navbar-brand
                 font-size: 2.2em
                 padding: 17px 28px 13px 28px
@@ -245,48 +226,66 @@ header
                 li
                     padding: 0 0.15em 0 0.1em
                     &.buy-now
-                        a 
+                        a
                             font-size: 1.2em
                             padding: 0.15em 0.3em 0.15em 0.31em
     .films-container
         padding: 3.5em 4em 1em 4em
+        .film
+            .film-playlist
+                +dimensions(25em, 36em)
+                right: -1.5em
+                &::after
+                    height: 35em
+                .film-playlist-panel-A,
+                .film-playlist-panel-B
+                    h2
+                        font-size: 1.2em
+                        &::after
+                            width: 20.9em
+                    .film-playlist-item
+                        &::after
+                            width: 25em
+                        .film-playlist-title
+                            h3
+                                font-size: 0.85em
+                            button
+                                +dimensions(2.2em, 1em)
+                        .film-playlist-content
+                            font-size: 0.8em
         .film-details
-            padding-top: 1.4em   
+            padding-top: 1.4em
             .film-name
                 font-size: 1.2em
                 p:nth-child(2)
                     font-size: 0.9em
             .film-settings
-                a 
-                    img 
-                        width: 2.35em
-                        height: 2.35em
+                a
+                    img
+                        +dimensions(2.35em, 2.35em)
                     &.active::before
-                        width: 2em
-                        height: 2em
+                        top: -4.3em
+                        +dimensions(1.8em, 1.8em)
     .films-description
         padding: 1.7em 4em 2em 4.2em
-        p 
+        p
             font-size: 0.9em
             margin-bottom: 1.3em
         .download
             margin-top: 1.7em
-            img 
-                width: 2.3em
-                height: 2.3em
+            img
+                +dimensions(2.3em, 2.3em)
             .file
-                margin-left: 0.5em
-                margin-top: 0.35em
-                p            
+                margin: 0.35em 0 0 0.5em
+                p
                     font-size: 1em
-                a   
-                    font-size: 0.8em 
+                a
+                    font-size: 0.8em
 /* For computers: */
 @media (max-width: 991px)
     header
         .bg-light
-            padding-left: 2em
-            padding-right: 2em
+            padding: 1em 2em
             .navbar-toggler
                 outline: none
             .navbar-brand
@@ -294,24 +293,49 @@ header
                 font-size: 2em
                 padding: 0.4em 0.6em 0.3em 0.7em
             .navbar-collapse
-                padding-top: 1em
-                padding-bottom: 1em
+                padding: 1em 0
                 li
                     width: 25em
                     padding: 0.5em 1em 0.5em 0
-                    &.active 
+                    &.your-account
                         padding: 0.5em 1em 0.5em 0
     .films-container
         padding: 3em 3.5em 0.8em 3.5em
-        .film-details                   
-            padding-top: 1em 
+        .film
+            .film-playlist
+                +dimensions(22em, 33em)
+                &::after
+                    height: 32em
+                .film-playlist-panel-A,
+                .film-playlist-panel-B
+                    h2,
+                    .film-playlist-item
+                        &::after
+                            width: 22em
+                    h2
+                        font-size: 1em
+                    .film-playlist-item
+                        .film-playlist-title
+                            h3
+                                font-size: 0.8em
+                            button
+                                +dimensions(2.1em, 0.9em)
+                        .film-playlist-content
+                            font-size: 0.7em
+        .film-details
+            padding-top: 1em
+            .film-settings
+                a
+                    &.active::before
+                        top: -3.9em
+                        +dimensions(1.7em, 1.7em)
     .films-description
         padding: 1.2em 3.5em 1.5em 3.8em
 /* For tablets: */
 @media (max-width: 767px)
     header
         .bg-light
-            .navbar-brand            
+            .navbar-brand
                 font-size: 1.8em
                 padding: 0.3em 0.5em 0.2em 0.6em
             .navbar-collapse
@@ -319,35 +343,46 @@ header
                     width: 22em
     .films-container
         padding: 2em 2.5em 0.8em 2.5em
+        .film
+            .film-playlist
+                +dimensions(20em, 31em)
+                right: -1em
+                &::after
+                    height: 30em
+                .film-playlist-panel-A,
+                .film-playlist-panel-B
+                    h2,
+                    .film-playlist-item
+                        &::after
+                            width: 20em
         .film-details
             .film-name
                 font-size: 1em
                 p:nth-child(2)
                     font-size: 0.7em
             .film-settings
-                a 
-                    img 
-                        width: 2.15em
-                        height: 2.15em
+                a
+                    img
+                        +dimensions(2.15em, 2.15em)
+                    &.active::before
+                        +dimensions(1.6em, 1.6em)
     .films-description
         padding: 1em 3.3em 1.3em 3.6em
         .download
             margin-top: 1.5em
-            img 
-                width: 2em
-                height: 2em
+            img
+                +dimensions(2em, 2em)
             .file
                 margin-top: 0.25em
-                p             
+                p
                     font-size: 0.8em
-                a   
-                    font-size: 0.7em 
+                a
+                    font-size: 0.7em
 /* For smart phones: */
 @media (max-width: 479px)
     header
         .bg-light
-            padding-left: 1em
-            padding-right: 1em
+            padding: 1em
             .navbar-brand
                 font-size: 1.6em
                 padding: 0.2em 0.35em 0.18em 0.5em
@@ -357,31 +392,51 @@ header
                     width: 80vw
     .films-container
         padding: 1.5em 1.5em 0.3em 1.5em
+        .film
+            .film-playlist
+                +dimensions(90%, 100%)
+                max-height: 52em
+                right: 5%
+                &::after
+                    height: 97%
+                .film-playlist-panel-A,
+                .film-playlist-panel-B
+                    h2,
+                    .film-playlist-item
+                        &::after
+                            width: 100%
+                    .film-playlist-item
+                        .film-playlist-title
+                            h3
+                                width: 70%
+                                margin-right: 3vw
         .film-details
             justify-content: center
-            flex-wrap: wrap
+            flex-direction: column-reverse
             text-align: center
-            padding-left: 0
-            padding-bottom: 0.8em
+            padding: 0
             .film-name
                 padding-bottom: 0.7em
-            .film-settings 
-                a 
+            .film-settings
+                align-self: auto
+                padding: 1.2em 0 0.8em 0
+                a
                     margin-left: 0.8em
-                    &:nth-child(1)   
+                    &:nth-child(1)
                         margin-left: 0
+                    &.active::before
+                        top: -3.8em
     .films-description
         padding: 0.9em 1em 1.2em 1em
-        p 
+        p
             letter-spacing: normal
             text-align: center
         .download
-            img 
-                width: 2em
-                height: 2em
+            justify-content: center
+            img
+                +dimensions(2em, 2em)
             .file
-                margin-left: 0.3em
-                margin-top: 0
-                p 
-                    text-align: left
+                margin: 0 0 0 0.3em
+                text-align: center
+                p
                     line-height: 1.1em
